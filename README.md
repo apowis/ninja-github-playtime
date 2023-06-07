@@ -17,7 +17,6 @@ This repo will be used to do some collaboritive exercises relating to use of git
 6. Once your PR has been approved it, merge it.
 7. Revel in the glory of version control.
 
-
 ## Task 2
 
 1. Go back to the main branch and pull the new changes.
