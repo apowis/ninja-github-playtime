@@ -38,8 +38,12 @@ jobs:
                 print('\n'.join(d['project']['dependencies'] + d['project']['optional-dependencies']['local']))" |
             xargs pip install
 
-      - name: "pip install meh and run pytests"
+      - name: "pip install meh"
         run: |
           source .venv/bin/activate
           pip install .
+
+      - name: "run pytests"
+        run: |
+          source .venv/bin/activate
           pytest -v

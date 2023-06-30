@@ -7,7 +7,7 @@ name = "meh"
 readme = "README.md"
 dependencies = [
     "python-dotenv==1.0.0",
-    "torch==2.0.1",  # huge package
+    "numpy==1.25.0",  # huge package
 ]
 version = "0.0.1"
 
