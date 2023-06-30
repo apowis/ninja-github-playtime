@@ -8,3 +8,4 @@ def test_f():
 
 def test_numpy():
     a = np.arange(2)
+
