@@ -1,0 +1,49 @@
+name: "hacky testing"
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened, closed]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v4
+        id: setup_python
+        with:
+            python-version: "3.10"
+
+      - name: cache virtualenv
+        uses: actions/cache@v3
+        id: cache-venv
+        with:
+          path: ./.venv/
+          key: ${{ runner.os }}-${{ steps.setup_python.outputs.python-version }}-venv-${{ hashFiles('pyproject.toml') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ steps.setup_python.outputs.python-version }}-venv-
+
+      - name: "pip install dependencies"
+        if: steps.setup_python.outputs.cache-hit != 'true'
+        run: |
+            # to read pyproject.toml
+            python -m venv .venv
+            source ./.venv/bin/activate
+            pip install toml
+            # pip install packages from pyproject.toml
+            python -c "import toml;\
+                d = toml.load('pyproject.toml');\
+                print('\n'.join(d['project']['dependencies'] + d['project']['optional-dependencies']['local']))" |
+            xargs pip install
+
+      - name: "pip install meh"
+        run: |
+          source .venv/bin/activate
+          pip install .
+
+      - name: "run pytests"
+        run: |
+          source .venv/bin/activate
+          pytest -v
