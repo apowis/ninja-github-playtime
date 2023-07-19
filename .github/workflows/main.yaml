@@ -19,7 +19,7 @@ jobs:
 
       - name: "pip install meh"
         run: |
-          pip install .
+          pip install .[local]
 
       - name: "run pytests"
         run: |
