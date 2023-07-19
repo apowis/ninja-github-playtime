@@ -3,7 +3,7 @@
 This repo will be used to do some collaboritive exercises relating to use of git, GitHub, and other fun things.
 
 ## Task 0
-
+ 
 1. Clone this repo and open it in your IDE of choice.
 2. Slack me your github handle so I can add write permissions for you.
 
