@@ -19,10 +19,8 @@ jobs:
 
       - name: "pip install meh"
         run: |
-          source .venv/bin/activate
-          pip install .
+          pip install .[local]
 
       - name: "run pytests"
         run: |
-          source .venv/bin/activate
           pytest -v
