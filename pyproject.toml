@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools >= 65.5.0","wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "meh"
+readme = "README.md"
+dependencies = [
+    "python-dotenv==1.0.0",
+    "numpy==1.25.0",  # huge package
+]
+version = "0.0.1"
+
+[project.optional-dependencies]
+local = [
+    "pytest==7.4.0"
+]
